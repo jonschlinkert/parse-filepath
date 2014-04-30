@@ -1,4 +1,4 @@
-# filepath-object [![NPM version](https://badge.fury.io/js/filepath-object.png)](http://badge.fury.io/js/filepath-object)
+# parse-filepath [![NPM version](https://badge.fury.io/js/parse-filepath.png)](http://badge.fury.io/js/parse-filepath)
 
 > Parse a filepath and return an object of path parts. Tiny lib, no dependencies.
 
@@ -6,7 +6,7 @@
 Install with [npm](npmjs.org):
 
 ```bash
-npm i filepath-object --save-dev
+npm i parse-filepath --save-dev
 ```
 
 

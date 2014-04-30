@@ -1,23 +1,23 @@
 {
-  "name": "filepath-object",
+  "name": "parse-filepath",
   "description": "Parse a filepath and return an object of path parts. Tiny lib, no dependencies.",
   "version": "0.1.0",
-  "homepage": "https://github.com/jonschlinkert/filepath-object",
+  "homepage": "https://github.com/jonschlinkert/parse-filepath",
   "author": {
     "name": "Jon Schlinkert",
     "url": "https://github.com/jonschlinkert"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jonschlinkert/filepath-object.git"
+    "url": "git://github.com/jonschlinkert/parse-filepath.git"
   },
   "bugs": {
-    "url": "https://github.com/jonschlinkert/filepath-object/issues"
+    "url": "https://github.com/jonschlinkert/parse-filepath/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/jonschlinkert/filepath-object/blob/master/LICENSE-MIT"
+      "url": "https://github.com/jonschlinkert/parse-filepath/blob/master/LICENSE-MIT"
     }
   ],
   "keywords": [

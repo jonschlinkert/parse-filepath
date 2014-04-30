@@ -1,5 +1,5 @@
 /**
-  * filepath-object <https://github.com/jonschlinkert/filepath-object>
+  * parse-filepath <https://github.com/jonschlinkert/parse-filepath>
   *
   * Copyright (c) 2014, Jon Schlinkert, Brian Woodward, contributors.
   * Licensed under the MIT License
@@ -14,7 +14,7 @@ var upper = function(str) {
   return str.toUpperCase();
 };
 
-describe('filepath-object:', function() {
+describe('parse-filepath:', function() {
   describe('when a filepath is passed', function() {
     it('should return an object of path parts', function() {
       var actual = obj('foo/index.html');
