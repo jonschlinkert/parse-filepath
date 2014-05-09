@@ -2,21 +2,49 @@
 
 var path = require('path');
 
-module.exports = function filepathObject(filepath, fn) {
-  var dir = path.dirname(filepath);
-  var base = path.basename(filepath);
-  var ext = path.extname(filepath);
-  var name = path.basename(filepath, ext);
+function addDot(str) {
+  return '.' + str;
+}
+
+function compact(arr) {
+  return arr.filter(Boolean);
+}
+
+function strip(str) {
+  return str.replace(/^\/|\/$/g, '');
+}
+
+function isDotfile(str) {
+  return /^\./.test(str.split('/').reverse()[0]);
+}
+
+module.exports = function(filepath) {
+  // normalize slashes
+  filepath = filepath.replace(/\\/g, '/');
+  var dirname = path.dirname(filepath);
+
+  var basename = filepath.replace(dirname, '');
+  var name = basename.split('.')[0];
+  var extname = basename.replace(name, '');
+
+  if (isDotfile(filepath)) {
+    basename = extname;
+    name = basename;
+    extname = '';
+  }
+
+  // create an array of extensions. useful if more than one extension exists
+  var segments = compact(extname.split('.')).map(addDot);
 
   return {
-    filepath: filepath,
-    dir: dir,
-    dirname: dir,
-    filename: base,
-    basename: base,
-    name: name,
-    ext: ext,
-    extname: ext,
-    fn: (fn && typeof fn === 'function') ? fn(filepath) : ''
+    basename: strip(basename),
+    dirname: dirname,
+    extname: extname,
+    name: strip(name),
+    extSegments: segments
   };
 };
+
+
+var str = 'foo/bar/.dotfile';
+console.log(path.basename(str, path.extname(str)));
