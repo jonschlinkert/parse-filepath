@@ -19,7 +19,6 @@ function isDotfile(str) {
 }
 
 module.exports = function(filepath) {
-  // normalize slashes
   filepath = filepath.replace(/\\/g, '/');
   var dirname = path.dirname(filepath);
 
@@ -44,7 +43,3 @@ module.exports = function(filepath) {
     extSegments: segments
   };
 };
-
-
-var str = 'foo/bar/.dotfile';
-console.log(path.basename(str, path.extname(str)));
