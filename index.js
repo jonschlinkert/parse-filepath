@@ -2,14 +2,6 @@
 
 var path = require('path');
 
-function addDot(str) {
-  return '.' + str;
-}
-
-function compact(arr) {
-  return arr.filter(Boolean);
-}
-
 function strip(str) {
   return str.replace(/^\/|\/$/g, '');
 }
@@ -22,7 +14,11 @@ module.exports = function(filepath) {
   filepath = filepath.replace(/\\/g, '/');
   var dirname = path.dirname(filepath);
 
-  var basename = filepath.replace(dirname, '');
+  var basename = path.basename(filepath);
+  if (dirname !== '.') {
+    basename = filepath.replace(dirname, '');
+  }
+
   var name = basename.split('.')[0];
   var extname = basename.replace(name, '');
 
@@ -33,13 +29,16 @@ module.exports = function(filepath) {
   }
 
   // create an array of extensions. useful if more than one extension exists
-  var segments = compact(extname.split('.')).map(addDot);
+  var segments = extname.split('.').filter(Boolean);
 
-  return {
-    basename: strip(basename),
-    dirname: dirname,
-    extname: extname,
-    name: strip(name),
-    extSegments: segments
+  var parts = {
+    dirname    : dirname,
+    basename   : strip(basename),
+    name       : strip(name),
+    extname    : extname,
+    extSegments: segments.map(function(str) {
+      return '.' + str;
+    })
   };
+  return parts;
 };

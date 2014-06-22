@@ -1,7 +1,7 @@
 {
   "name": "parse-filepath",
   "description": "Thin wrapper around the node.js path module to simplify working with multiple file extensions and yield predictable results for basename. Just pass a filepath and get an object of path segments. This is a tiny lib with no dependencies.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/jonschlinkert/parse-filepath",
   "author": {
     "name": "Jon Schlinkert",

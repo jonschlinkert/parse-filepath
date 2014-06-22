@@ -109,6 +109,20 @@ describe('parse-filepath:', function() {
     });
   });
 
+  describe('when a dirname is "."', function() {
+    it('should preserve the basename', function() {
+      var actual = parsePath('index.js');
+      var expected = {
+        dirname: '.',
+        basename: 'index.js',
+        name: 'index',
+        extname: '.js',
+        extSegments: ['.js'],
+      };
+      expect(actual).to.eql(expected);
+    });
+  });
+
   describe('when a filepath with zero extensions is passed', function() {
     it('should return an object of path parts', function() {
       var actual = parsePath('foo/bar/baz/index/');
