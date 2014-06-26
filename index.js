@@ -1,6 +1,7 @@
 'use strict';
 
 var path = require('path');
+var endsWith = require('path-ends-with');
 
 function strip(str) {
   return str.replace(/^\/|\/$/g, '');
@@ -13,8 +14,13 @@ function isDotfile(str) {
 module.exports = function(filepath) {
   filepath = filepath.replace(/\\/g, '/');
   var dirname = path.dirname(filepath);
-
   var basename = path.basename(filepath);
+
+  if (endsWith(filepath, '/')) {
+    dirname = filepath;
+    basename = '';
+  }
+
   if (dirname !== '.') {
     basename = filepath.replace(dirname, '');
   }

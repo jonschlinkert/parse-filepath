@@ -66,7 +66,6 @@ describe('parse-filepath:', function() {
   });
 
   describe('when a filepath is passed', function() {
-
     it('should return an object of path parts', function() {
       var actual = parsePath('foo/bar/baz/index.html');
       var expected = {
@@ -75,6 +74,20 @@ describe('parse-filepath:', function() {
         extname: '.html',
         basename: 'index.html',
         extSegments: ['.html']
+      };
+      expect(actual).to.eql(expected);
+    });
+  });
+
+  describe('when a filepath ends with a slash', function() {
+    it('dirname should be the full filepath, and basename should be empty', function() {
+      var actual = parsePath('foo/bar/baz/quux/');
+      var expected = {
+        name: '',
+        dirname: 'foo/bar/baz/quux/',
+        extname: '',
+        basename: '',
+        extSegments: []
       };
       expect(actual).to.eql(expected);
     });
@@ -125,7 +138,7 @@ describe('parse-filepath:', function() {
 
   describe('when a filepath with zero extensions is passed', function() {
     it('should return an object of path parts', function() {
-      var actual = parsePath('foo/bar/baz/index/');
+      var actual = parsePath('foo/bar/baz/index');
       var expected = {
         name: 'index',
         dirname: 'foo/bar/baz',
