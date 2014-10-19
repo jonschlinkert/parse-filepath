@@ -1,7 +1,7 @@
 {
   "name": "parse-filepath",
-  "description": "Thin wrapper around the node.js path module to simplify working with multiple file extensions and yield predictable results for basename. Just pass a filepath and get an object of path segments. This is a tiny lib with no dependencies.",
-  "version": "0.3.0",
+  "description": "Parse a filepath into an object, yielding predictable results for basename and extname.",
+  "version": "0.3.1",
   "homepage": "https://github.com/jonschlinkert/parse-filepath",
   "author": {
     "name": "Jon Schlinkert",
@@ -39,11 +39,11 @@
     "test": "mocha -R spec"
   },
   "devDependencies": {
-    "verb": "~0.2.0",
-    "chai": "~1.9.1",
-    "mocha": "~1.18.2"
+    "mocha": "~1.18.2",
+    "should": "^4.0.4",
+    "verb": "^0.2.15"
   },
   "dependencies": {
-    "path-ends-with": "^0.1.1"
+    "path-ends-with": "^0.2.1"
   }
 }

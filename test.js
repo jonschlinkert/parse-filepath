@@ -1,16 +1,15 @@
-/**
-  * parse-filepath <https://github.com/jonschlinkert/parse-filepath>
-  *
-  * Copyright (c) 2014, Jon Schlinkert, Brian Woodward, contributors.
-  * Licensed under the MIT License
-  *
-  */
+/*!
+ * parse-filepath <https://github.com/jonschlinkert/parse-filepath>
+ *
+ * Copyright (c) 2014, Jon Schlinkert, Brian Woodward, contributors.
+ * Licensed under the MIT License
+ */
 
-var expect = require('chai').expect;
-var file = require('fs-utils');
-var parsePath = require('../');
+'use strict';
 
-      // file.writeJSONSync('path.json', actual);
+var should = require('should');
+var parsePath = require('./');
+
 
 describe('parse-filepath:', function() {
   describe('dotfiles', function() {
@@ -23,7 +22,7 @@ describe('parse-filepath:', function() {
         basename: '.dotfile',
         extSegments: []
       };
-      expect(actual).to.eql(expected);
+      actual.should.eql(expected);
     });
 
     it('should recognize dotfiles', function() {
@@ -35,7 +34,7 @@ describe('parse-filepath:', function() {
         basename: '.dotfile',
         extSegments: []
       };
-      expect(actual).to.eql(expected);
+      actual.should.eql(expected);
     });
   });
 
@@ -49,7 +48,7 @@ describe('parse-filepath:', function() {
         basename: 'foo',
         extSegments: []
       };
-      expect(actual).to.eql(expected);
+      actual.should.eql(expected);
     });
 
     it('should return the correct values', function() {
@@ -61,7 +60,7 @@ describe('parse-filepath:', function() {
         basename: 'foo',
         extSegments: []
       };
-      expect(actual).to.eql(expected);
+      actual.should.eql(expected);
     });
   });
 
@@ -75,7 +74,7 @@ describe('parse-filepath:', function() {
         basename: 'index.html',
         extSegments: ['.html']
       };
-      expect(actual).to.eql(expected);
+      actual.should.eql(expected);
     });
   });
 
@@ -89,7 +88,7 @@ describe('parse-filepath:', function() {
         basename: '',
         extSegments: []
       };
-      expect(actual).to.eql(expected);
+      actual.should.eql(expected);
     });
   });
 
@@ -104,7 +103,7 @@ describe('parse-filepath:', function() {
         basename: 'index.md.html',
         extSegments: ['.md', '.html']
       };
-      expect(actual).to.eql(expected);
+      actual.should.eql(expected);
     });
   });
 
@@ -118,7 +117,7 @@ describe('parse-filepath:', function() {
         basename: 'index',
         extSegments: []
       };
-      expect(actual).to.eql(expected);
+      actual.should.eql(expected);
     });
   });
 
@@ -132,7 +131,7 @@ describe('parse-filepath:', function() {
         extname: '.js',
         extSegments: ['.js'],
       };
-      expect(actual).to.eql(expected);
+      actual.should.eql(expected);
     });
   });
 
@@ -146,7 +145,7 @@ describe('parse-filepath:', function() {
         basename: 'index',
         extSegments: []
       };
-      expect(actual).to.eql(expected);
+      actual.should.eql(expected);
     });
   });
 });
@@ -157,12 +156,12 @@ describe('utils.ext()', function() {
 
     it('should return the extension from options.ext', function() {
       var actual = parsePath(filepath);
-      expect(actual.extname).to.eql('.min.js');
+      actual.extname.should.eql('.min.js');
     });
 
     it('should return the extension from options.ext', function() {
       var actual = parsePath(filepath);
-      expect(actual.extSegments).to.eql(['.min', '.js']);
+      actual.extSegments.should.eql(['.min', '.js']);
     });
   });
 
@@ -171,12 +170,12 @@ describe('utils.ext()', function() {
 
     it('should return the extname', function() {
       var actual = parsePath(filepath);
-      expect(actual.extname).to.eql('.js');
+      actual.extname.should.eql('.js');
     });
 
     it('should return an array with the extname', function() {
       var actual = parsePath(filepath);
-      expect(actual.extSegments).to.eql(['.js']);
+      actual.extSegments.should.eql(['.js']);
     });
   });
 
@@ -185,12 +184,12 @@ describe('utils.ext()', function() {
 
     it('should return an empty extname', function() {
       var actual = parsePath(filepath);
-      expect(actual.extname).to.eql('');
+      actual.extname.should.eql('');
     });
 
     it('should return an empty extSegments array', function() {
       var actual = parsePath(filepath);
-      expect(actual.extSegments).to.eql([]);
+      actual.extSegments.should.eql([]);
     });
   });
 });
