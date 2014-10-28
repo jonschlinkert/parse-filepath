@@ -24,32 +24,45 @@ module.exports = function parse(fp) {
   var name = basename.split('.')[0];
   var ext = basename.replace(name, '');
 
-  if (isDotfile(fp)) {
+  if (isConfigFile(fp)) {
+    basename = path.basename(fp);
+    var segs = basename.split('.').filter(Boolean);
+    name = segs[0];
+    ext = segs[1];
+  } else if (isDotfile(fp)) {
     basename = ext;
-    name = basename;
+    name = basename.slice(1);
     ext = '';
   }
 
   // create an array of extensions. useful
   // if more than one extension exists
   var segments = ext.split('.').filter(Boolean);
+  if (ext && ext[0] !== '.') {
+    ext = '.' + ext;
+  }
 
   var parts = {
     dirname: dirname,
     basename: strip(basename),
     name: strip(name),
     extname: ext,
-    extSegments: segments.map(function(str) {
-      // add extension dots back
-      return '.' + str;
+    extSegments: segments.map(function(ext) {
+      if (ext && ext[0] !== '.') {
+        ext = '.' + ext;
+      }
+      return ext;
     })
   };
   return parts;
 };
 
+/**
+ * Strip leading and trailing slashes
+ */
 
 function strip(str) {
-  return str.replace(/^\/|\/$/g, '');
+  return str.replace(/^[\/]+|[\/]+$/g, '');
 }
 
 /**
@@ -57,7 +70,15 @@ function strip(str) {
  * is a dotfile. It may be a directory as well.
  */
 
-function isDotfile(str) {
-  return /^\./.test(str.split('/')
-    .reverse()[0]);
+function isDotfile(fp) {
+  return /^\./.test(path.basename(fp));
+}
+
+function isConfigFile(fp) {
+  if(isDotfile(fp)) {
+    fp = path.basename(fp);
+    fp = fp.slice(1);
+    return /\./.test(fp);
+  }
+  return false;
 }
