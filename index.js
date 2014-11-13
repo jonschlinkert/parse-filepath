@@ -5,7 +5,7 @@ var endsWith = require('path-ends-with');
 
 module.exports = function parse(fp) {
   if (typeof fp !== 'string') {
-    throw new Error('parse-fp expects a string.');
+    throw new Error('parse-filepath expects a string.');
   }
 
   fp = fp.replace(/\\/g, '/');
