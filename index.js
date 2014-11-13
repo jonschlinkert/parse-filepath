@@ -43,7 +43,7 @@ module.exports = function parse(fp) {
   }
 
   var parts = {
-    dirname: dirname,
+    dirname: path.normalize(dirname),
     basename: strip(basename),
     name: strip(name),
     extname: ext,

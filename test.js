@@ -7,8 +7,13 @@
 
 'use strict';
 
+var path = require('path');
 var should = require('should');
 var parsePath = require('./');
+
+function normalize(str) {
+  return path.normalize(str);
+}
 
 
 describe('parse-filepath:', function() {
@@ -16,7 +21,7 @@ describe('parse-filepath:', function() {
     it('should recognize dotfiles', function() {
       parsePath('foo/bar/baz/.dotfile').should.eql({
         name: 'dotfile',
-        dirname: 'foo/bar/baz',
+        dirname: normalize('foo/bar/baz'),
         extname: '',
         basename: '.dotfile',
         extSegments: []
@@ -80,7 +85,7 @@ describe('parse-filepath:', function() {
     it('should return an object of path parts', function() {
       parsePath('foo/bar/baz/index.html').should.eql({
         name: 'index',
-        dirname: 'foo/bar/baz',
+        dirname: normalize('foo/bar/baz'),
         extname: '.html',
         basename: 'index.html',
         extSegments: ['.html']
@@ -92,7 +97,7 @@ describe('parse-filepath:', function() {
     it('dirname should be the full filepath, and basename should be empty', function() {
       parsePath('foo/bar/baz/quux/').should.eql({
         name: '',
-        dirname: 'foo/bar/baz/quux/',
+        dirname: normalize('foo/bar/baz/quux/'),
         extname: '',
         basename: '',
         extSegments: []
@@ -104,7 +109,7 @@ describe('parse-filepath:', function() {
     it('should return an object of path parts', function() {
       parsePath('foo/bar/baz/index.md.html').should.eql({
         name: 'index',
-        dirname: 'foo/bar/baz',
+        dirname: normalize('foo/bar/baz'),
         extname: '.md.html',
         basename: 'index.md.html',
         extSegments: ['.md', '.html']
@@ -116,7 +121,7 @@ describe('parse-filepath:', function() {
     it('should return an object of path parts', function() {
       parsePath('foo/bar/baz/index').should.eql({
         name: 'index',
-        dirname: 'foo/bar/baz',
+        dirname: normalize('foo/bar/baz'),
         extname: '',
         basename: 'index',
         extSegments: []
@@ -140,7 +145,7 @@ describe('parse-filepath:', function() {
     it('should return an object of path parts', function() {
       parsePath('foo/bar/baz/index').should.eql({
         name: 'index',
-        dirname: 'foo/bar/baz',
+        dirname: normalize('foo/bar/baz'),
         extname: '',
         basename: 'index',
         extSegments: []
