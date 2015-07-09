@@ -1,48 +1,45 @@
 {
   "name": "parse-filepath",
-  "description": "Parse a filepath into an object, yielding predictable results for basename and extname.",
-  "version": "0.5.0",
+  "description": "Parse a filepath into an object. Falls back on the native node.js `path.parse` method if it exists.",
+  "version": "0.6.0",
   "homepage": "https://github.com/jonschlinkert/parse-filepath",
-  "author": {
-    "name": "Jon Schlinkert",
-    "url": "https://github.com/jonschlinkert"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jonschlinkert/parse-filepath.git"
-  },
+  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "repository": "jonschlinkert/parse-filepath",
   "bugs": {
     "url": "https://github.com/jonschlinkert/parse-filepath/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/jonschlinkert/parse-filepath/blob/master/LICENSE-MIT"
-    }
-  ],
-  "keywords": [
-    "basename",
-    "dir",
-    "dirname",
-    "ext",
-    "extname",
-    "filepath",
-    "name",
-    "object",
-    "path"
+  "license": "MIT",
+  "files": [
+    "index.js"
   ],
   "main": "index.js",
   "engines": {
     "node": ">=0.8"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha"
   },
   "devDependencies": {
-    "mocha": "~1.18.2",
-    "should": "^4.0.4"
+    "mocha": "^2.2.5",
+    "should": "^7.0.2"
   },
-  "dependencies": {
-    "path-ends-with": "^0.2.1"
-  }
+  "keywords": [
+    "basename",
+    "dir",
+    "directory",
+    "dirname",
+    "ext",
+    "extension",
+    "extname",
+    "file",
+    "filename",
+    "filepath",
+    "name",
+    "object",
+    "parse",
+    "parser",
+    "parts",
+    "path",
+    "segment"
+  ]
 }
