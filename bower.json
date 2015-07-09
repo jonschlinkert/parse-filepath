@@ -1,7 +1,27 @@
 {
   "name": "parse-filepath",
-  "version": "0.3.0",
+  "description": "Parse a filepath into an object, yielding predictable results for basename and extname.",
+  "repository": "jonschlinkert/parse-filepath",
+  "homepage": "https://github.com/jonschlinkert/parse-filepath",
+  "authors": [
+    "Jon Schlinkert (https://github.com/jonschlinkert)"
+  ],
   "main": [
     "index.js"
+  ],
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "should": "^7.0.2"
+  },
+  "keywords": [
+    "basename",
+    "dir",
+    "dirname",
+    "ext",
+    "extname",
+    "filepath",
+    "name",
+    "object",
+    "path"
   ]
 }
