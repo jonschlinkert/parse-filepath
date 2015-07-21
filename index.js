@@ -1,14 +1,21 @@
 'use strict';
 
 var path = require('path');
+var isAbsolute = require('is-absolute');
+var MapCache = require('map-cache');
 var nativeParse = path.parse;
+var cache = new MapCache();
 
 module.exports = function parse(fp) {
   if (typeof fp !== 'string') {
     throw new Error('parse-filepath expects a string.');
   }
 
-  var res = {};
+  if (cache.has(fp)) {
+    return cache.get(fp);
+  }
+
+  var res = { path: fp, isAbsolute: isAbsolute(fp) };
   var params = {
     base: 'basename',
     dir: 'dirname',
@@ -16,6 +23,8 @@ module.exports = function parse(fp) {
     name: 'name',
     root: 'root'
   };
+
+  res.absolute = path.resolve(res.path);
 
   if (typeof nativeParse === 'function') {
     var parsed = nativeParse(fp);
@@ -33,5 +42,7 @@ module.exports = function parse(fp) {
     res.dirname = path.dirname(fp);
     res.root = '';
   }
+
+  cache.set(fp, res);
   return res;
 };
