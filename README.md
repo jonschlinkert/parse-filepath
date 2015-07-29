@@ -2,10 +2,10 @@
 
 > Parse a filepath into an object. Falls back on the native node.js `path.parse` method if it exists.
 
-## Install with [npm](npmjs.org)
+Install with [npm](https://www.npmjs.com/)
 
-```bash
-npm i parse-filepath --save
+```sh
+$ npm i parse-filepath --save
 ```
 
 ## Usage
@@ -29,34 +29,36 @@ Returns:
 ```
 
 ## Related projects
+
+* [cwd](https://github.com/jonschlinkert/cwd): Easily get the CWD (current working directory) of a project based on package.json, optionally starting… [more](https://github.com/jonschlinkert/cwd)
+* [global-prefix](https://github.com/jonschlinkert/global-prefix): Get the npm global path prefix.
 * [is-absolute](https://github.com/jonschlinkert/is-absolute): Return true if a file path is absolute.
 * [is-relative](https://github.com/jonschlinkert/is-relative): Returns `true` if the path appears to be relative.
-* [cwd](https://github.com/jonschlinkert/cwd): Easily get the CWD (current working directory) of a project based on package.json, optionally starting from a given path. (Node.js/javascript util)
-* [global-prefix](https://github.com/jonschlinkert/global-prefix): Get the npm global path prefix.
-* [relative](https://github.com/jonschlinkert/relative#readme): Get the relative filepath from path A to path B. Calculates from file-to-directory, file-to-file, directory-to-file, and directory-to-directory.
+* [relative](https://github.com/jonschlinkert/relative#readme): Get the relative filepath from path A to path B. Calculates from file-to-directory, file-to-file, directory-to-file,… [more](https://github.com/jonschlinkert/relative#readme)
 
 ## Running tests
-Install dev dependencies.
 
-```bash
-npm i -d && npm test
+Install dev dependencies:
+
+```sh
+$ npm i -d && npm test
 ```
 
-
 ## Contributing
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/jonschlinkert/parse-filepath/issues)
 
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/jonschlinkert/parse-filepath/issues/new)
 
 ## Author
 
 **Jon Schlinkert**
- 
+
 + [github/jonschlinkert](https://github.com/jonschlinkert)
-+ [twitter/jonschlinkert](http://twitter.com/jonschlinkert) 
++ [twitter/jonschlinkert](http://twitter.com/jonschlinkert)
 
 ## License
+
 Copyright © 2014-2015 [Jon Schlinkert](https://github.com/jonschlinkert)
-Released under the [MIT](https://github.com/https://github.com/jonschlinkert/parse-filepath/blob/master/LICENSE) license
+Released under the MIT license.
 
 ***
 
