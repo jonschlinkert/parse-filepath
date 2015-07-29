@@ -37,7 +37,7 @@ module.exports = function parse(fp) {
   } else {
     var ext = path.extname(fp);
     res.name = path.basename(fp, ext);
-    res.basename = res.name + res.ext;
+    res.basename = res.name + ext;
     res.extname = path.extname(fp);
     res.dirname = path.dirname(fp);
     res.root = '';
