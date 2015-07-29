@@ -1,7 +1,7 @@
 {
   "name": "parse-filepath",
   "description": "Parse a filepath into an object. Falls back on the native node.js `path.parse` method if it exists.",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "homepage": "https://github.com/jonschlinkert/parse-filepath",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/parse-filepath",
