@@ -2,7 +2,7 @@
 
 /* deps: mocha */
 var path = require('path');
-var should = require('should');
+require('should');
 var parsePath = require('./');
 var hasParse = typeof path.parse === 'function';
 

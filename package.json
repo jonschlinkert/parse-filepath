@@ -19,13 +19,13 @@
   "scripts": {
     "test": "mocha"
   },
-  "devDependencies": {
-    "mocha": "^2.2.5",
-    "should": "^7.0.2"
-  },
   "dependencies": {
     "is-absolute": "^0.2.2",
     "map-cache": "^0.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "should": "^7.0.2"
   },
   "keywords": [
     "absolute",
