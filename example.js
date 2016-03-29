@@ -1,2 +1,2 @@
 var parsePath = require('./');
-console.log(parsePath('foo/bar/baz/index.html'));
+console.log(parsePath('foo/bar/baz/index.js'));

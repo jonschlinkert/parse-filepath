@@ -1,7 +1,8 @@
 {
   "name": "parse-filepath",
-  "description": "Parse a filepath into an object, yielding predictable results for basename and extname.",
+  "description": "Pollyfill for node.js `path.parse`, parses a filepath into an object.",
   "repository": "jonschlinkert/parse-filepath",
+  "license": "MIT",
   "homepage": "https://github.com/jonschlinkert/parse-filepath",
   "authors": [
     "Jon Schlinkert (https://github.com/jonschlinkert)"
@@ -9,19 +10,34 @@
   "main": [
     "index.js"
   ],
+  "dependencies": {
+    "is-absolute": "^0.2.3",
+    "map-cache": "^0.2.0"
+  },
   "devDependencies": {
+    "gulp-format-md": "^0.1.7",
     "mocha": "^2.2.5",
     "should": "^7.0.2"
   },
   "keywords": [
+    "absolute",
     "basename",
     "dir",
+    "directory",
     "dirname",
     "ext",
+    "extension",
     "extname",
+    "file",
+    "filename",
     "filepath",
+    "is-absolute",
     "name",
     "object",
-    "path"
+    "parse",
+    "parser",
+    "parts",
+    "path",
+    "segment"
   ]
 }
