@@ -1,6 +1,6 @@
 {
   "name": "parse-filepath",
-  "description": "Parse a filepath into an object. Falls back on the native node.js `path.parse` method if it exists.",
+  "description": "Pollyfill for node.js `path.parse`, parses a filepath into an object.",
   "version": "0.6.3",
   "homepage": "https://github.com/jonschlinkert/parse-filepath",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
@@ -20,10 +20,12 @@
     "test": "mocha"
   },
   "dependencies": {
-    "is-absolute": "^0.2.2",
-    "map-cache": "^0.2.0"
+    "is-absolute": "^0.2.3",
+    "map-cache": "^0.2.0",
+    "path-root": "^0.1.1"
   },
   "devDependencies": {
+    "gulp-format-md": "^0.1.7",
     "mocha": "^2.2.5",
     "should": "^7.0.2"
   },
@@ -49,14 +51,29 @@
     "segment"
   ],
   "verb": {
+    "run": true,
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
     "related": {
+      "highlight": "global-prefix",
       "list": [
+        "global-prefix",
         "is-absolute",
         "is-relative",
-        "cwd",
-        "global-prefix",
         "relative"
       ]
+    },
+    "reflinks": [
+      "verb"
+    ],
+    "lint": {
+      "reflinks": true
     }
   }
 }
