@@ -2,6 +2,7 @@
 
 var path = require('path');
 var isAbsolute = require('is-absolute');
+var pathRoot = require('path-root');
 var MapCache = require('map-cache');
 var cache = new MapCache();
 
@@ -23,7 +24,9 @@ module.exports = function(filepath) {
     obj.stem = obj.name;
 
   } else {
-    obj.root = '';
+    define(obj, 'root', function() {
+      return pathRoot(this.path);
+    });
 
     define(obj, 'extname', function() {
       return path.extname(filepath);
@@ -50,7 +53,8 @@ module.exports = function(filepath) {
     });
 
     define(obj, 'dir', function() {
-      return path.dirname(filepath);
+      var dir = path.dirname(filepath);
+      return dir === '.' ? '' : dir;
     });
 
     define(obj, 'dirname', function() {
