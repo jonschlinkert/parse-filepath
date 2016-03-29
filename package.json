@@ -1,7 +1,7 @@
 {
   "name": "parse-filepath",
   "description": "Pollyfill for node.js `path.parse`, parses a filepath into an object.",
-  "version": "0.6.3",
+  "version": "1.0.0",
   "homepage": "https://github.com/jonschlinkert/parse-filepath",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/parse-filepath",
