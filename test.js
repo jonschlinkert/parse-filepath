@@ -161,16 +161,15 @@ if (hasParse) {
   });
 }
 
-
 describe('without native `path.parse` method:', function() {
   var fn;
 
-  before(function () {
+  before(function() {
     fn = path.parse;
     delete path.parse;
   });
 
-  after(function () {
+  after(function() {
     path.parse = fn;
   });
 

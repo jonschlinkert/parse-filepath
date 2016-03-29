@@ -29,7 +29,6 @@
   },
   "keywords": [
     "absolute",
-    "is-absolute",
     "basename",
     "dir",
     "directory",
@@ -40,6 +39,7 @@
     "file",
     "filename",
     "filepath",
+    "is-absolute",
     "name",
     "object",
     "parse",
@@ -47,5 +47,16 @@
     "parts",
     "path",
     "segment"
-  ]
+  ],
+  "verb": {
+    "related": {
+      "list": [
+        "is-absolute",
+        "is-relative",
+        "cwd",
+        "global-prefix",
+        "relative"
+      ]
+    }
+  }
 }
