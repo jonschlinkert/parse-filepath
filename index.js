@@ -53,8 +53,7 @@ module.exports = function(filepath) {
     });
 
     define(obj, 'dir', function() {
-      var dir = path.dirname(filepath);
-      return dir === '.' ? '' : dir;
+      return path.dirname(filepath);
     });
 
     define(obj, 'dirname', function() {
