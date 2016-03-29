@@ -1,65 +1,111 @@
-# parse-filepath [![NPM version](https://badge.fury.io/js/parse-filepath.svg)](http://badge.fury.io/js/parse-filepath)
+# parse-filepath [![NPM version](https://img.shields.io/npm/v/parse-filepath.svg?style=flat)](https://www.npmjs.com/package/parse-filepath) [![NPM downloads](https://img.shields.io/npm/dm/parse-filepath.svg?style=flat)](https://npmjs.org/package/parse-filepath) [![Build Status](https://img.shields.io/travis/jonschlinkert/parse-filepath.svg?style=flat)](https://travis-ci.org/jonschlinkert/parse-filepath)
 
-> Parse a filepath into an object. Falls back on the native node.js `path.parse` method if it exists.
+> Pollyfill for node.js `path.parse`, parses a filepath into an object.
 
-Install with [npm](https://www.npmjs.com/)
+You might also be interested in [global-prefix](https://github.com/jonschlinkert/global-prefix).
+
+## Install
+
+Install with [npm](https://www.npmjs.com/):
 
 ```sh
-$ npm i parse-filepath --save
+$ npm install parse-filepath --save
 ```
 
 ## Usage
 
 ```js
 var parsePath = require('parse-filepath');
-parsePath('foo/bar/baz/index.html');
+parsePath(filepath);
+```
+
+This can be used as a polyfill for the native node.js `path.parse()` method, and it also adds a few properties:
+
+* `path`: the original filepath
+* `isAbsolute`: (getter) true if the given path is absolute
+* `absolute`: (getter) fully resolved, absolute filepath
+* `dirname`: alias for `dir`
+* `basename`: alias for `base`
+* `extname`: alias for `ext`
+* `stem`: alias for `name`
+
+**Example**
+
+```js
+var parsePath = require('parse-filepath');
+console.log(parsePath('foo/bar/baz/index.js'));
 ```
 
 Returns:
 
 ```js
-{ path: 'foo/bar/baz/index.html',
-  isAbsolute: false,
-  absolute: '/Users/jonschlinkert/dev/parse-filepath/foo/bar/baz/index.html',
-  root: '',
+{ root: '',
+  dir: 'foo/bar/baz',
+  base: 'index.js',
+  ext: '.js',
+  name: 'index',
+
+  // aliases
+  extname: '.js',
+  basename: 'index.js',
   dirname: 'foo/bar/baz',
-  basename: 'index.html',
-  extname: '.html',
-  name: 'index' }
+  stem: 'index',
+
+  // original path
+  path: 'foo/bar/baz/index.js',
+
+  // getters
+  absolute: [Getter/Setter],
+  isAbsolute: [Getter/Setter] }
 ```
 
 ## Related projects
 
-* [cwd](https://github.com/jonschlinkert/cwd): Easily get the CWD (current working directory) of a project based on package.json, optionally starting… [more](https://github.com/jonschlinkert/cwd)
-* [global-prefix](https://github.com/jonschlinkert/global-prefix): Get the npm global path prefix.
-* [is-absolute](https://github.com/jonschlinkert/is-absolute): Return true if a file path is absolute.
-* [is-relative](https://github.com/jonschlinkert/is-relative): Returns `true` if the path appears to be relative.
-* [relative](https://github.com/jonschlinkert/relative#readme): Get the relative filepath from path A to path B. Calculates from file-to-directory, file-to-file, directory-to-file,… [more](https://github.com/jonschlinkert/relative#readme)
+You might also be interested in these projects:
+
+* [global-prefix](https://www.npmjs.com/package/global-prefix): Get the npm global path prefix. | [homepage](https://github.com/jonschlinkert/global-prefix)
+* [is-absolute](https://www.npmjs.com/package/is-absolute): Polyfill for node.js `path.isAbolute`. Returns true if a file path is absolute. | [homepage](https://github.com/jonschlinkert/is-absolute)
+* [is-relative](https://www.npmjs.com/package/is-relative): Returns `true` if the path appears to be relative. | [homepage](https://github.com/jonschlinkert/is-relative)
+* [relative](https://www.npmjs.com/package/relative): Get the relative filepath from path A to path B. Calculates from file-to-directory, file-to-file, directory-to-file,… [more](https://www.npmjs.com/package/relative) | [homepage](https://github.com/jonschlinkert/relative)
+
+## Contributing
+
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/jonschlinkert/parse-filepath/issues/new).
+
+## Building docs
+
+Generate readme and API documentation with [verb](https://github.com/verbose/verb):
+
+```sh
+$ npm install verb && npm run docs
+```
+
+Or, if [verb](https://github.com/verbose/verb) is installed globally:
+
+```sh
+$ verb
+```
 
 ## Running tests
 
 Install dev dependencies:
 
 ```sh
-$ npm i -d && npm test
+$ npm install -d && npm test
 ```
-
-## Contributing
-
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/jonschlinkert/parse-filepath/issues/new)
 
 ## Author
 
 **Jon Schlinkert**
 
-+ [github/jonschlinkert](https://github.com/jonschlinkert)
-+ [twitter/jonschlinkert](http://twitter.com/jonschlinkert)
+* [github/jonschlinkert](https://github.com/jonschlinkert)
+* [twitter/jonschlinkert](http://twitter.com/jonschlinkert)
 
 ## License
 
-Copyright © 2014-2015 [Jon Schlinkert](https://github.com/jonschlinkert)
-Released under the MIT license.
+Copyright © 2016, [Jon Schlinkert](https://github.com/jonschlinkert).
+Released under the [MIT license](https://github.com/jonschlinkert/parse-filepath/blob/master/LICENSE).
 
 ***
 
-_This file was generated by [verb-cli](https://github.com/assemble/verb-cli) on July 29, 2015._
+_This file was generated by [verb](https://github.com/verbose/verb), v, on March 29, 2016._
