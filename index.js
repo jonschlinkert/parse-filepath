@@ -24,50 +24,50 @@ module.exports = function(filepath) {
     obj.stem = obj.name;
 
   } else {
-    define(obj, 'root', function() {
+    defineProp(obj, 'root', function() {
       return pathRoot(this.path);
     });
 
-    define(obj, 'extname', function() {
+    defineProp(obj, 'extname', function() {
       return path.extname(filepath);
     });
 
-    define(obj, 'ext', function() {
+    defineProp(obj, 'ext', function() {
       return this.extname;
     });
 
-    define(obj, 'name', function() {
+    defineProp(obj, 'name', function() {
       return path.basename(filepath, this.ext);
     });
 
-    define(obj, 'stem', function() {
+    defineProp(obj, 'stem', function() {
       return this.name;
     });
 
-    define(obj, 'base', function() {
+    defineProp(obj, 'base', function() {
       return this.name + this.ext;
     });
 
-    define(obj, 'basename', function() {
+    defineProp(obj, 'basename', function() {
       return this.base;
     });
 
-    define(obj, 'dir', function() {
+    defineProp(obj, 'dir', function() {
       return path.dirname(filepath);
     });
 
-    define(obj, 'dirname', function() {
+    defineProp(obj, 'dirname', function() {
       return this.dir;
     });
   }
 
   obj.path = filepath;
 
-  define(obj, 'absolute', function() {
+  defineProp(obj, 'absolute', function() {
     return path.resolve(this.path);
   });
 
-  define(obj, 'isAbsolute', function() {
+  defineProp(obj, 'isAbsolute', function() {
     return isAbsolute(this.path);
   });
 
@@ -75,7 +75,7 @@ module.exports = function(filepath) {
   return obj;
 };
 
-function define(obj, prop, fn) {
+function defineProp(obj, prop, fn) {
   var cached;
   Object.defineProperty(obj, prop, {
     configurable: true,
