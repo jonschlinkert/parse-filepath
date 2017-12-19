@@ -20,7 +20,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "is-absolute": "^0.2.3",
+    "is-absolute": "^1.0.0",
     "map-cache": "^0.2.0",
     "path-root": "^0.1.1"
   },
