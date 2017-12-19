@@ -4,10 +4,18 @@ require('mocha');
 require('should');
 var path = require('path');
 var assert = require('assert');
-var parsePath = require('./');
 
 if (typeof path.parse === 'function') {
   describe('with native `path.parse` method:', function() {
+
+    var parsePath;
+
+    beforeEach(function() {
+      // Avoid cache
+      delete require.cache[require.resolve('./')];
+      parsePath = require('./');
+    });
+
     describe('dotfiles', function() {
       it('should get the absolute path:', function() {
         var parsed = parsePath('foo/bar/baz/.dotfile');
@@ -16,6 +24,9 @@ if (typeof path.parse === 'function') {
 
       it('should specify if a path is absolute:', function() {
         assert(!parsePath('foo/bar/baz/.dotfile').isAbsolute);
+      });
+
+      it('should specify if a path is absolute:', function() {
         assert(parsePath('/foo/bar/baz/.dotfile').isAbsolute);
       });
 
@@ -214,7 +225,9 @@ if (typeof path.parse === 'function') {
 }
 
 describe('without native `path.parse` method:', function() {
+
   var fn;
+  var parsePath;
 
   before(function() {
     fn = path.parse;
@@ -225,6 +238,12 @@ describe('without native `path.parse` method:', function() {
     path.parse = fn;
   });
 
+  beforeEach(function() {
+    // Avoid cache
+    delete require.cache[require.resolve('./')];
+    parsePath = require('./');
+  });
+
   describe('dotfiles', function() {
     it('should get the absolute path:', function() {
       var parsed = parsePath('foo/bar/baz/.dotfile');
@@ -232,7 +251,10 @@ describe('without native `path.parse` method:', function() {
     });
 
     it('should specify if a path is absolute:', function() {
-      assert(!parsePath('foo/bar/baz/.dotfile').isAbsolute);;
+      assert(!parsePath('foo/bar/baz/.dotfile').isAbsolute);
+    });
+
+    it('should specify if a path is absolute', function() {
       assert(parsePath('/foo/bar/baz/.dotfile').isAbsolute);
     });
 
